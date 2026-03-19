@@ -50,46 +50,6 @@
   </div>
 </section>
 
-<!-- Method Overview Section -->
-<section class="method-section">
-  <div class="container">
-    <h2>Method Overview</h2>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="method-icon"><i class="fas fa-layer-group"></i></div>
-        <h3>Data-Guided RPL Construction</h3>
-        <p>Instead of random initialization, MGSM leverages initial-task data and the pretrained model to guide RPL construction, iteratively selecting target-aligned, non-redundant random bases.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-icon"><i class="fas fa-filter"></i></div>
-        <h3>MGSM Acceptance Criterion</h3>
-        <p>Candidate random bases are evaluated by a principled acceptance criterion (Theorem 1) that balances residual reduction with regularization, ensuring convergence guarantees.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-icon"><i class="fas fa-compress-arrows-alt"></i></div>
-        <h3>Compact &amp; Well-Conditioned</h3>
-        <p>The resulting RPL is compact with less collinear bases, yielding better-conditioned feature matrices that improve the numerical stability of recursive ridge-regression updates.</p>
-      </div>
-    </div>
-    <div class="pipeline-figure">
-      <iframe src="static/detail_b.pdf" width="100%" height="500px" style="border:none;"></iframe>
-      <p class="fig-caption"><strong>Figure:</strong> Overview of MGSM-guided RPL construction in SCL-MGSM. Random hidden units are progressively sampled, evaluated by MGSM, and appended to the RPL only if they satisfy the supervisory criterion.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- BibTeX Section -->
-<section class="bibtex-section">
-  <div class="container">
-    <h2>BibTeX</h2>
-    <div class="bibtex-box">
-      <button class="copy-btn" id="copy-bibtex" title="Copy to clipboard"><i class="fas fa-copy"></i></button>
-      <pre><code id="bibtex-content">Coming soon.</code></pre>
-    </div>
-  </div>
-</section>
-
 <!-- Footer -->
 <footer>
   <div class="container">
@@ -97,15 +57,5 @@
   </div>
 </footer>
 
-<script>
-  // Copy BibTeX
-  document.getElementById('copy-bibtex').addEventListener('click', function() {
-    const text = document.getElementById('bibtex-content').textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      this.innerHTML = '<i class="fas fa-check"></i>';
-      setTimeout(() => { this.innerHTML = '<i class="fas fa-copy"></i>'; }, 2000);
-    });
-  });
-</script>
 </body>
 </html>
