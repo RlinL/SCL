@@ -39,26 +39,6 @@
   </div>
 </section>
 
-<!-- Animation Section -->
-<section class="animation-section">
-  <div class="container">
-    <h2>MGSM-guided RPL Construction</h2>
-    <p class="section-subtitle">The MemoryGuard Supervisory Mechanism progressively selects target-aligned random bases to construct a compact yet expressive Random Projection Layer.</p>
-    <div class="animation-wrapper">
-      <canvas id="mgsm-canvas"></canvas>
-      <div class="animation-controls">
-        <button id="btn-play" class="ctrl-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
-        <button id="btn-restart" class="ctrl-btn" title="Restart"><i class="fas fa-redo"></i></button>
-        <div class="legend">
-          <span class="legend-item"><span class="dot dot-candidate"></span> Candidate basis</span>
-          <span class="legend-item"><span class="dot dot-accepted"></span> Accepted</span>
-          <span class="legend-item"><span class="dot dot-rejected"></span> Rejected</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Abstract Section -->
 <section class="abstract-section">
   <div class="container">
@@ -91,7 +71,7 @@
       </div>
     </div>
     <div class="pipeline-figure">
-      <img src="static/pipeline.png" alt="SCL-MGSM Pipeline" id="pipeline-img">
+      <iframe src="static/detail_b.pdf" width="100%" height="500px" style="border:none;"></iframe>
       <p class="fig-caption"><strong>Figure:</strong> Overview of MGSM-guided RPL construction in SCL-MGSM. Random hidden units are progressively sampled, evaluated by MGSM, and appended to the RPL only if they satisfy the supervisory criterion.</p>
     </div>
   </div>
@@ -116,7 +96,6 @@
   </div>
 </footer>
 
-<script src="animation.js"></script>
 <script>
   // Copy BibTeX
   document.getElementById('copy-bibtex').addEventListener('click', function() {
