@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SCL-MGSM: Enhancing Pretrained Model-based Continual Representation Learning via Guided Random Projection</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1 class="title">Enhancing Pretrained Model-based Continual Representation Learning via Guided Random Projection</h1>
+    <div class="authors">
+      <span class="author">Ruilin Li<sup>1,2,*</sup></span>
+      <span class="author">Heming Zou<sup>4,*</sup></span>
+      <span class="author">Xiufeng Yan<sup>6</sup></span>
+      <span class="author">Zheming Liang<sup>5</sup></span>
+      <span class="author">Jie Yang<sup>1,2</sup></span>
+      <span class="author">Chenliang Li<sup>1,&dagger;</sup></span>
+      <span class="author">Xue Yang<sup>3,&dagger;</sup></span>
+    </div>
+    <div class="affiliations">
+      <span><sup>1</sup>Wuhan University</span>
+      <span><sup>2</sup>Shanghai Innovation Institute</span>
+      <span><sup>3</sup>Shanghai Jiao Tong University</span>
+      <span><sup>4</sup>Tsinghua University</span>
+      <span><sup>5</sup>USTC</span>
+      <span><sup>6</sup>CUMT</span>
+    </div>
+    <p class="author-note"><sup>*</sup>Equal contribution &nbsp; <sup>&dagger;</sup>Corresponding author</p>
+
+    <div class="links">
+      <a href="#" class="btn"><i class="fas fa-file-pdf"></i> Paper</a>
+      <a href="#" class="btn"><i class="ai ai-arxiv"></i><img src="https://img.icons8.com/material-outlined/24/ffffff/bookmark-ribbon.png" alt="" style="width:16px;height:16px;vertical-align:middle;filter:brightness(10);margin-right:4px;">arXiv</a>
+      <a href="#" class="btn"><i class="fab fa-github"></i> Code</a>
+      <a href="#" class="btn"><i class="fas fa-video"></i> Video</a>
+    </div>
+  </div>
+</section>
+
+<!-- Animation Section -->
+<section class="animation-section">
+  <div class="container">
+    <h2>MGSM-guided RPL Construction</h2>
+    <p class="section-subtitle">The MemoryGuard Supervisory Mechanism progressively selects target-aligned random bases to construct a compact yet expressive Random Projection Layer.</p>
+    <div class="animation-wrapper">
+      <canvas id="mgsm-canvas"></canvas>
+      <div class="animation-controls">
+        <button id="btn-play" class="ctrl-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
+        <button id="btn-restart" class="ctrl-btn" title="Restart"><i class="fas fa-redo"></i></button>
+        <div class="legend">
+          <span class="legend-item"><span class="dot dot-candidate"></span> Candidate basis</span>
+          <span class="legend-item"><span class="dot dot-accepted"></span> Accepted</span>
+          <span class="legend-item"><span class="dot dot-rejected"></span> Rejected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract Section -->
+<section class="abstract-section">
+  <div class="container">
+    <h2>Abstract</h2>
+    <p class="abstract-text">
+      Recent paradigms in Random Projection Layer (RPL)-based continual representation learning have demonstrated superior performance when building upon a pre-trained model (PTM). These methods insert a randomly initialized RPL after a PTM to enhance feature representation in the initial stage. Subsequently, a linear classification head is used for analytic updates in the continual learning stage. However, under severe domain gaps between pre-trained representations and target domains, a randomly initialized RPL exhibits limited expressivity under large domain shifts. While largely scaling up the RPL dimension can improve expressivity, it also induces an ill-conditioned feature matrix, thereby destabilizing the recursive analytic updates of the linear head. To this end, we propose the <strong>Stochastic Continual Learner with MemoryGuard Supervisory Mechanism (SCL-MGSM)</strong>. Unlike random initialization, MGSM constructs the projection layer via a principled, data-guided mechanism that progressively selects target-aligned random bases to adapt the PTM representation to downstream tasks. This facilitates the construction of a compact yet expressive RPL while improving the numerical stability of analytic updates. Extensive experiments on multiple exemplar-free Class Incremental Learning (CIL) benchmarks demonstrate that SCL-MGSM achieves superior performance compared to state-of-the-art methods.
+    </p>
+  </div>
+</section>
+
+<!-- Method Overview Section -->
+<section class="method-section">
+  <div class="container">
+    <h2>Method Overview</h2>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-icon"><i class="fas fa-layer-group"></i></div>
+        <h3>Data-Guided RPL Construction</h3>
+        <p>Instead of random initialization, MGSM leverages initial-task data and the pretrained model to guide RPL construction, iteratively selecting target-aligned, non-redundant random bases.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon"><i class="fas fa-filter"></i></div>
+        <h3>MGSM Acceptance Criterion</h3>
+        <p>Candidate random bases are evaluated by a principled acceptance criterion (Theorem 1) that balances residual reduction with regularization, ensuring convergence guarantees.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+        <h3>Compact &amp; Well-Conditioned</h3>
+        <p>The resulting RPL is compact with less collinear bases, yielding better-conditioned feature matrices that improve the numerical stability of recursive ridge-regression updates.</p>
+      </div>
+    </div>
+    <div class="pipeline-figure">
+      <img src="static/pipeline.png" alt="SCL-MGSM Pipeline" id="pipeline-img">
+      <p class="fig-caption"><strong>Figure:</strong> Overview of MGSM-guided RPL construction in SCL-MGSM. Random hidden units are progressively sampled, evaluated by MGSM, and appended to the RPL only if they satisfy the supervisory criterion.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTeX Section -->
+<section class="bibtex-section">
+  <div class="container">
+    <h2>BibTeX</h2>
+    <div class="bibtex-box">
+      <button class="copy-btn" id="copy-bibtex" title="Copy to clipboard"><i class="fas fa-copy"></i></button>
+      <pre><code id="bibtex-content">@inproceedings{li2025enhancing,
+  title={Enhancing Pretrained Model-based Continual Representation Learning via Guided Random Projection},
+  author={Li, Ruilin and Zou, Heming and Yan, Xiufeng and Liang, Zheming and Yang, Jie and Li, Chenliang and Yang, Xue},
+  booktitle={International Conference on Machine Learning (ICML)},
+  year={2025}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>SCL-MGSM &copy; 2025. This page template is adapted from <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.</p>
+  </div>
+</footer>
+
+<script src="animation.js"></script>
+<script>
+  // Copy BibTeX
+  document.getElementById('copy-bibtex').addEventListener('click', function() {
+    const text = document.getElementById('bibtex-content').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      this.innerHTML = '<i class="fas fa-check"></i>';
+      setTimeout(() => { this.innerHTML = '<i class="fas fa-copy"></i>'; }, 2000);
+    });
+  });
+</script>
+</body>
+</html>
