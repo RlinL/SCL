@@ -50,12 +50,51 @@
   </div>
 </section>
 
+<!-- BibTeX Section -->
+<section class="bibtex-section">
+  <div class="container">
+    <h2>BibTeX</h2>
+    <div class="bibtex-box">
+      <button class="copy-btn" type="button" aria-label="Copy BibTeX" onclick="copyBibtex()">
+        <i class="fa-regular fa-copy"></i>
+      </button>
+      <pre><code id="bibtex-code">@misc{li2026enhancingpretrainedmodelbasedcontinual,
+      title={Enhancing Pretrained Model-based Continual Representation Learning via Guided Random Projection},
+      author={Ruilin Li and Heming Zou and Xiufeng Yan and Zheming Liang and Jie Yang and Chenliang Li and Xue Yang},
+      year={2026},
+      eprint={2603.19145},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2603.19145},
+}</code></pre>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer>
   <div class="container">
     <p>SCL-MGSM &copy; 2025. This page template is adapted from <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.</p>
   </div>
 </footer>
+
+<script>
+  async function copyBibtex() {
+    const code = document.getElementById('bibtex-code').textContent;
+    const button = document.querySelector('.copy-btn');
+    const icon = button.querySelector('i');
+
+    try {
+      await navigator.clipboard.writeText(code);
+      icon.className = 'fa-solid fa-check';
+      setTimeout(() => {
+        icon.className = 'fa-regular fa-copy';
+      }, 1500);
+    } catch (error) {
+      console.error('Failed to copy BibTeX:', error);
+    }
+  }
+</script>
 
 </body>
 </html>
